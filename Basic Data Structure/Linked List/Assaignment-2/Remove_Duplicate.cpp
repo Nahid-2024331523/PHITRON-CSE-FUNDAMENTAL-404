@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node
+{
+public:
+    int val;
+    Node* next;
+
+    Node(int val)
+    {
+        this->val=val;
+        this->next=NULL;
+    }
+};
+void insert_linklist_tail(Node* &head , Node* &tail , int val)
+{
+    Node* newnode=new Node(val);
+    if(head==NULL){
+        head=newnode;
+        tail=newnode;
+        return;
+    }
+    tail->next=newnode;
+    tail=newnode;
+}
+void print_linklist(Node* head)
+{
+    set<int> st;
+    Node* tmp=head;
+    while(tmp!=NULL){
+        if(st.find(tmp->val)==st.end()){
+            cout<<tmp->val<<" ";
+            st.insert(tmp->val);
+        }
+        tmp=tmp->next;
+    }
+}
+int main()
+{
+    Node* head=NULL;
+    Node* tail=NULL;
+    int v;
+    while(true){
+        cin>>v;
+        if(v==-1){
+            break;
+        }
+        insert_linklist_tail(head,tail,v);
+    }
+    print_linklist(head);
+    return 0;
+}
