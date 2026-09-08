@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-class mystack
+class MyStack
     {
         public:
         queue<int> q;
@@ -34,7 +34,7 @@ class mystack
     };
 int main()
 {
-    mystack s;
+    MyStack s;
     s.push(10);
     s.push(20);
     s.push(30);

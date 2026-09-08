@@ -1,0 +1,81 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node
+{
+    public:
+    int val;
+    Node* left;
+    Node* right;
+    Node(int val)
+    {
+        this->val=val;
+        this->left=NULL;
+        this->right=NULL;
+    }
+};
+Node* input_tree()
+{
+    int val; cin>>val;
+    Node* root;
+    if(val==-1) root=NULL;
+    else root=new Node(val);
+
+    queue<Node*> q;
+    if(root) q.push(root);
+
+    while(!q.empty()){
+        Node* p=q.front();
+        q.pop();
+        int l,r; cin>>l>>r;
+        Node *myleft,*myright;
+        if(l==-1) myleft=NULL;
+        else myleft=new Node(l);
+        if(r==-1) myright=NULL;
+        else myright=new Node(r);
+
+        p->left=myleft;
+        p->right=myright;
+
+        if(p->left) q.push(p->left);
+        if(p->right) q.push(p->right);
+    }
+    return root;
+}
+int count_nodes(Node* root)
+{
+    if(root==NULL){
+        return 0;
+    }
+    int l=count_nodes(root->left);
+    int r=count_nodes(root->right);
+    return l+r+1;
+}
+int level_order(Node* root)
+{
+    int count=0;
+    queue<Node*> q;
+    q.push(root);
+    while(!q.empty()){
+        Node* f=q.front();
+        if((f->left!=NULL && f->right!=NULL) || (f->left==NULL && f->right==NULL)){
+            count++;
+        }
+        q.pop();
+        if(f->left){
+            q.push(f->left);
+        }
+        if(f->right){
+            q.push(f->right);
+        }
+    }
+    return count;
+}
+int main()
+{
+    Node* root=input_tree();
+    int a=count_nodes(root);
+    int b=level_order(root);
+    if(a==b) cout<<"YES";
+    else cout<<"NO";
+    return 0;
+}
