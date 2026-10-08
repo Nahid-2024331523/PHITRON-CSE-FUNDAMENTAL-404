@@ -1,0 +1,9 @@
+a=10
+b=3
+print('summation = ',a+b)
+print('subtraction = ',a-b)
+print('multiplication = ',a*b)
+print('power = ',a**b)
+print('quotient = ',a/b)  #float ans
+print('exact quotient = ',a//b) #int ans
+print('reminder = ',a%b)

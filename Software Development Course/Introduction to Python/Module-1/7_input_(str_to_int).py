@@ -1,0 +1,10 @@
+first_salary=input('salary of your first month :')
+second_salary=input('salary of your second month :')
+first_salary_int=int(first_salary)
+second_salary_int=int(second_salary)
+print('first month salary = ',first_salary_int)
+print('second month salary = ',second_salary_int)
+print(type(first_salary_int))
+print(type(second_salary_int))
+total=first_salary_int+second_salary_int
+print('total salary = ',total)
